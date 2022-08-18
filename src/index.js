@@ -1,5 +1,17 @@
 console.log("Hello There!");
 const totallyHiddenKey = "a410c7747e64412717e2146de1d964f7";
+const weatherBtn = document.getElementById("btn-send");
+const inputContent = document.getElementById("loc");
+
+// Event Listeners
+
+weatherBtn.addEventListener("click", () => {
+  let value = inputContent.value;
+  console.log("Input value: " + value + "\n-------------");
+  showWeather(value);
+});
+
+// Functions
 
 async function getWeather(location = "London") {
   let response = await fetch(
@@ -11,7 +23,6 @@ async function getWeather(location = "London") {
   return getWeatherObj;
 }
 
-// Contorller function
 async function showWeather(location) {
   let weather = await getWeather(location);
   let wlocation = weather.name;
@@ -60,4 +71,4 @@ function createCard(
 }
 
 // getWeather();
-showWeather("Stockholm");
+// showWeather("Stockholm");
