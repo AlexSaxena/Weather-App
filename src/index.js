@@ -7,18 +7,6 @@ async function getWeather(location = "London") {
     { mode: "cors" }
   );
   let getWeatherObj = await response.json();
-  // console.log("inside GetWeather func.. ");
-  // console.log(getWeatherObj);
-  // console.log(getWeatherObj.name);
-  // console.log(getWeatherObj.main);
-  // console.log(getWeatherObj.main.temp);
-  // console.log(getWeatherObj.main.temp_min);
-  // console.log(getWeatherObj.main.temp_max);
-  // console.log(getWeatherObj.main.feels_like);
-  // console.log(getWeatherObj.main.pressure);
-  // console.log(getWeatherObj.main.humidity);
-  // console.log(getWeatherObj.weather[0].main);
-  // console.log(getWeatherObj.weather[0].description);
 
   return getWeatherObj;
 }
@@ -35,9 +23,41 @@ async function showWeather(location) {
   let wHumidity = weather.main.humidity;
   let wStatus = weather.weather[0].main;
   let wStatusDesc = weather.weather[0].description;
-  console.log("From show Weather Func name: " + weather.name);
 
-  return console.log("Make a Card Func...");
+  createCard(
+    wlocation,
+    wTemp,
+    wTempMin,
+    wTempMax,
+    wFeelsLike,
+    wPressure,
+    wHumidity,
+    wStatus,
+    wStatusDesc
+  );
 }
 
-getWeather();
+function createCard(
+  location,
+  temp,
+  tempMin,
+  tempMax,
+  feels_like,
+  pressure,
+  humidity,
+  status,
+  statusDesc
+) {
+  console.log("location: " + location);
+  console.log("Temp: " + temp);
+  console.log("Temp Min: " + tempMin);
+  console.log("Temp Max: " + tempMax);
+  console.log("Feels Like: " + feels_like);
+  console.log("Pressure: " + pressure);
+  console.log("Humidity: " + humidity);
+  console.log("Status: " + status);
+  console.log("Status Desc: " + statusDesc);
+}
+
+// getWeather();
+showWeather("Stockholm");
