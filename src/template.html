@@ -8,13 +8,19 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1>My Weather APP</h1>
     <main>
-      <div class="input-container">
-        <input type="text" name="loc" id="loc" />
-        <button id="btn-send">Send It</button>
+      <p class="input-title">How's The Weather?</p>
+      <div class="input-main-container">
+        <input
+          type="text"
+          name="location"
+          id="location"
+          class="form-field"
+          placeholder="A Cool Location"
+        />
+        <button class="btn-send">Check It!</button>
       </div>
-      <div class="card-container"></div>
+      <div class="card-container hidden"></div>
     </main>
   </body>
 </html>

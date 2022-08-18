@@ -5,8 +5,8 @@ var __webpack_exports__ = {};
   \**********************/
 console.log("Hello There!");
 const totallyHiddenKey = "a410c7747e64412717e2146de1d964f7";
-const weatherBtn = document.getElementById("btn-send");
-const inputContent = document.getElementById("loc");
+const weatherBtn = document.querySelector(".btn-send");
+const inputContent = document.getElementById("location");
 
 // Event Listeners
 
