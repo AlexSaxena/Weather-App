@@ -55,3 +55,55 @@ main {
   color: #e8e8e8;
   background-color: #212121;
 }
+.weather-output-container {
+  visibility: visible;
+  position: absolute;
+  place-content: center;
+  border: solid black 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
+  background-color: white;
+  min-height: 30vh;
+  min-width: 60vw;
+}
+.output-title {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  text-decoration: underline;
+}
+.weather-output-container > * {
+  text-align: center;
+}
+.output-temp-container {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.main-temp,
+.main-status {
+  font-size: 2.5rem;
+}
+.output-min-max-temp > * {
+  font-size: 1.2rem;
+}
+.temp-feels-like,
+.status-desc {
+  font-size: 1.2rem;
+}
+.output-diverse > * {
+  font-size: 1.1rem;
+}
+.output-status-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

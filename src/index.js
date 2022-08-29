@@ -59,7 +59,7 @@ function createCard(
   status,
   statusDesc
 ) {
-  console.log("location: " + location);
+  console.log(`location: ${location}`);
   console.log("Temp: " + temp);
   console.log("Temp Min: " + tempMin);
   console.log("Temp Max: " + tempMax);
