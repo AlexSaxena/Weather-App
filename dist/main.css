@@ -56,7 +56,8 @@ main {
   background-color: #212121;
 }
 .weather-output-container {
-  visibility: visible;
+  visibility: hidden;
+  border-radius: 10px;
   position: absolute;
   place-content: center;
   border: solid black 1px;
