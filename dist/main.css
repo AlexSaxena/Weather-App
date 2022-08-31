@@ -134,3 +134,8 @@ svg:hover > circle {
 svg:hover > path {
   stroke: white;
 }
+.error-msg {
+  visibility: hidden;
+  font-size: 1.2rem;
+  color: #ffff00;
+}
