@@ -71,6 +71,18 @@ function createCard(
     `location: ${location}\n Temp: ${temp} \n Temp Min: ${tempMin} \n Temp Max: ${tempMax} \n Feels Like: ${feels_like}\n
     Pressure: ${pressure} \n Humidity: ${humidity} \n Status: ${status} \n Status Desc: ${statusDesc}`
   );
+  let container = document.querySelector(".weather-output-container");
+  document.querySelector(".output-title").innerText = location;
+  document.querySelector(".main-temp").innerText = temp;
+  document.querySelector(".temp-min").innerText = tempMin;
+  document.querySelector(".temp-max").innerText = tempMax;
+  document.querySelector(".temp-feels-like").innerText = feels_like;
+  document.querySelector(".main-status").innerText = status;
+  document.querySelector(".status-desc").innerText = statusDesc;
+  document.querySelector(".humidity").innerText = `Humidity: ${humidity} | `;
+  document.querySelector(".wind-pressure").innerText = `Pressure: ${pressure}`;
+
+  container.style.visibility = "visible";
 }
 
 // getWeather();

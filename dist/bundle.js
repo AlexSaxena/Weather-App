@@ -7,6 +7,7 @@ console.log("Hello There!");
 const totallyHiddenKey = "a410c7747e64412717e2146de1d964f7";
 const weatherBtn = document.querySelector(".btn-send");
 const inputContent = document.getElementById("location");
+const resetBtn = document.querySelector(".reset-btn");
 
 // Event Listeners
 
@@ -14,6 +15,13 @@ weatherBtn.addEventListener("click", () => {
   let value = inputContent.value;
   console.log("Input value: " + value + "\n-------------");
   showWeather(value);
+  inputContent.value = "";
+});
+
+resetBtn.addEventListener("click", () => {
+  console.log("Container Hidden");
+  let container = document.querySelector(".weather-output-container");
+  container.style.visibility = "hidden";
 });
 
 // Functions
@@ -64,15 +72,22 @@ function createCard(
   status,
   statusDesc
 ) {
-  console.log(`location: ${location}`);
-  console.log("Temp: " + temp);
-  console.log("Temp Min: " + tempMin);
-  console.log("Temp Max: " + tempMax);
-  console.log("Feels Like: " + feels_like);
-  console.log("Pressure: " + pressure);
-  console.log("Humidity: " + humidity);
-  console.log("Status: " + status);
-  console.log("Status Desc: " + statusDesc);
+  console.log(
+    `location: ${location}\n Temp: ${temp} \n Temp Min: ${tempMin} \n Temp Max: ${tempMax} \n Feels Like: ${feels_like}\n
+    Pressure: ${pressure} \n Humidity: ${humidity} \n Status: ${status} \n Status Desc: ${statusDesc}`
+  );
+  let container = document.querySelector(".weather-output-container");
+  document.querySelector(".output-title").innerText = location;
+  document.querySelector(".main-temp").innerText = temp;
+  document.querySelector(".temp-min").innerText = tempMin;
+  document.querySelector(".temp-max").innerText = tempMax;
+  document.querySelector(".temp-feels-like").innerText = feels_like;
+  document.querySelector(".main-status").innerText = status;
+  document.querySelector(".status-desc").innerText = statusDesc;
+  document.querySelector(".humidity").innerText = `Humidity: ${humidity} | `;
+  document.querySelector(".wind-pressure").innerText = `Pressure: ${pressure}`;
+
+  container.style.visibility = "visible";
 }
 
 // getWeather();
