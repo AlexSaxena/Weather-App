@@ -8,14 +8,22 @@ const totallyHiddenKey = "a410c7747e64412717e2146de1d964f7";
 const weatherBtn = document.querySelector(".btn-send");
 const inputContent = document.getElementById("location");
 const resetBtn = document.querySelector(".reset-btn");
+const errorMsg = document.querySelector(".error-msg");
 
 // Event Listeners
 
 weatherBtn.addEventListener("click", () => {
   let value = inputContent.value;
   console.log("Input value: " + value + "\n-------------");
-  showWeather(value);
-  inputContent.value = "";
+  if (value.length < 1) {
+    errorMsg.textContent = "Field is Empty, Please Enter A City!";
+    errorMsg.style.visibility = "visible";
+  } else {
+    showWeather(value);
+    inputContent.value = "";
+    errorMsg.textContent = "Error Msg";
+    errorMsg.style.visibility = "hidden";
+  }
 });
 
 resetBtn.addEventListener("click", () => {
@@ -38,27 +46,33 @@ async function getWeather(location = "London") {
 
 async function showWeather(location) {
   let weather = await getWeather(location);
-  let wlocation = weather.name;
-  let wTemp = Math.round(weather.main.temp);
-  let wTempMin = weather.main.temp_min;
-  let wTempMax = weather.main.temp_max;
-  let wFeelsLike = weather.main.feels_like;
-  let wPressure = weather.main.pressure;
-  let wHumidity = weather.main.humidity;
-  let wStatus = weather.weather[0].main;
-  let wStatusDesc = weather.weather[0].description;
+  if (weather.cod == 404) {
+    console.log(weather.message);
+    errorMsg.textContent = `${weather.message}.. Try Again!`;
+    errorMsg.style.visibility = "visible";
+  } else {
+    let wlocation = weather.name;
+    let wTemp = Math.round(weather.main.temp);
+    let wTempMin = weather.main.temp_min;
+    let wTempMax = weather.main.temp_max;
+    let wFeelsLike = weather.main.feels_like;
+    let wPressure = weather.main.pressure;
+    let wHumidity = weather.main.humidity;
+    let wStatus = weather.weather[0].main;
+    let wStatusDesc = weather.weather[0].description;
 
-  createCard(
-    wlocation,
-    wTemp,
-    wTempMin,
-    wTempMax,
-    wFeelsLike,
-    wPressure,
-    wHumidity,
-    wStatus,
-    wStatusDesc
-  );
+    createCard(
+      wlocation,
+      wTemp,
+      wTempMin,
+      wTempMax,
+      wFeelsLike,
+      wPressure,
+      wHumidity,
+      wStatus,
+      wStatusDesc
+    );
+  }
 }
 
 function createCard(
@@ -78,7 +92,7 @@ function createCard(
   );
   let container = document.querySelector(".weather-output-container");
   document.querySelector(".output-title").innerText = location;
-  document.querySelector(".main-temp").innerHTML = `${temp} &#8451;`;
+  document.querySelector(".main-temp").innerHTML = `${temp}&#8451;`;
   document.querySelector(".temp-min").innerHTML = `Min: ${tempMin} &#8451; | `;
   document.querySelector(".temp-max").innerHTML = `Max: ${tempMax} &#8451;`;
   document.querySelector(
@@ -93,9 +107,6 @@ function createCard(
 
   container.style.visibility = "visible";
 }
-
-// getWeather();
-// showWeather("Stockholm");
 
 /******/ })()
 ;
