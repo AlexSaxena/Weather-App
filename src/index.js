@@ -47,7 +47,7 @@ async function showWeather(location) {
     errorMsg.style.visibility = "visible";
   } else {
     let wlocation = weather.name;
-    let wTemp = weather.main.temp;
+    let wTemp = Math.round(weather.main.temp);
     let wTempMin = weather.main.temp_min;
     let wTempMax = weather.main.temp_max;
     let wFeelsLike = weather.main.feels_like;
@@ -87,7 +87,7 @@ function createCard(
   );
   let container = document.querySelector(".weather-output-container");
   document.querySelector(".output-title").innerText = location;
-  document.querySelector(".main-temp").innerHTML = `${temp} &#8451;`;
+  document.querySelector(".main-temp").innerHTML = `${temp}&#8451;`;
   document.querySelector(".temp-min").innerHTML = `Min: ${tempMin} &#8451; | `;
   document.querySelector(".temp-max").innerHTML = `Max: ${tempMax} &#8451;`;
   document.querySelector(
