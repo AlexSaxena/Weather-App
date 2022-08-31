@@ -28,7 +28,7 @@ resetBtn.addEventListener("click", () => {
 
 async function getWeather(location = "London") {
   let response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${totallyHiddenKey}`,
+    `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${totallyHiddenKey}`,
     { mode: "cors" }
   );
   let getWeatherObj = await response.json();
@@ -39,7 +39,7 @@ async function getWeather(location = "London") {
 async function showWeather(location) {
   let weather = await getWeather(location);
   let wlocation = weather.name;
-  let wTemp = weather.main.temp;
+  let wTemp = Math.round(weather.main.temp);
   let wTempMin = weather.main.temp_min;
   let wTempMax = weather.main.temp_max;
   let wFeelsLike = weather.main.feels_like;
@@ -78,14 +78,18 @@ function createCard(
   );
   let container = document.querySelector(".weather-output-container");
   document.querySelector(".output-title").innerText = location;
-  document.querySelector(".main-temp").innerText = temp;
-  document.querySelector(".temp-min").innerText = tempMin;
-  document.querySelector(".temp-max").innerText = tempMax;
-  document.querySelector(".temp-feels-like").innerText = feels_like;
+  document.querySelector(".main-temp").innerHTML = `${temp} &#8451;`;
+  document.querySelector(".temp-min").innerHTML = `Min: ${tempMin} &#8451; | `;
+  document.querySelector(".temp-max").innerHTML = `Max: ${tempMax} &#8451;`;
+  document.querySelector(
+    ".temp-feels-like"
+  ).innerHTML = `Feels Like: ${feels_like} &#8451;`;
   document.querySelector(".main-status").innerText = status;
   document.querySelector(".status-desc").innerText = statusDesc;
-  document.querySelector(".humidity").innerText = `Humidity: ${humidity} | `;
-  document.querySelector(".wind-pressure").innerText = `Pressure: ${pressure}`;
+  document.querySelector(
+    ".humidity"
+  ).innerText = `Humidity: ${humidity} RHhr | `;
+  document.querySelector(".wind-pressure").innerText = `Pressure: ${pressure}p`;
 
   container.style.visibility = "visible";
 }
