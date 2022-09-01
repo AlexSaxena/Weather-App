@@ -36,7 +36,7 @@ resetBtn.addEventListener("click", () => {
 
 async function getWeather(location = "London") {
   let response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${totallyHiddenKey}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${totallyHiddenKey}`,
     { mode: "cors" }
   );
   let getWeatherObj = await response.json();
